@@ -16,6 +16,7 @@ def csv_report(input_file, output_file):
     myreader = csv.reader(mydata, delimiter=',')
 
     myresult = open(output_file, 'a')
+    myresult.write(input_file+'\n')
 
     global_line = 0
     page_count = 0
@@ -152,6 +153,7 @@ def csv_report(input_file, output_file):
             val7 = 0
 
     mydata.close()
+    myresult.write('\n')
     myresult.close()
 
 
