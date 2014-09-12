@@ -2,6 +2,7 @@
 
 import os
 import sys
+import string
 import csv
 from optparse import OptionParser
 
@@ -40,13 +41,13 @@ def csv_report(input_file, output_file):
         page_name = row[0]
         flow_name = row[1]
         browser = row[2]
-        total_time = row[3]
-        back_end = row[4]
-        front_end = row[5]
-        connect_time = row[6]
-        redirect_time = row[7]
-        download_time = row[8]
-        dom_time = row[9]
+        total_time = row[3].split('.')[0]
+        back_end = row[4].split('.')[0]
+        front_end = row[5].split('.')[0]
+        connect_time = row[6].split('.')[0]
+        redirect_time = row[7].split('.')[0]
+        download_time = row[8].split('.')[0]
+        dom_time = row[9].split('.')[0]
 
         print row
         #Group the shit here on page_name
