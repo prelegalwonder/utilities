@@ -11,7 +11,7 @@ myssout = myss.read()
 myssjson = json.loads(myssout)
 
 #System call to get backup info and prep it for json
-bupath = 'vfs:///mnt/nfs/c7engs004/Backup/docker/convoy'
+bupath = '<your perm convoy backup path here>' #example - 'vfs:///mnt/some/nfs/mount/convoy'
 mybu = os.popen('sudo convoy backup list '+bupath,'r')
 mybuout = mybu.read()
 mybujson = json.loads(mybuout)
@@ -35,7 +35,7 @@ def listBackups(convoyPayload):
     pattern = '%a %b %d %H:%M:%S -0500 %Y'
     result = {}
     for k1, v1 in convoyPayload.iteritems():
-	buname = v1["SnapshotName"] 
+	buname = v1["SnapshotName"]
 	bufurl = v1["BackupURL"]
         buepoch = int(time.mktime(time.strptime(str(v1["CreatedTime"]), pattern)))
         result[buname] = [buepoch, bufurl]
@@ -117,7 +117,7 @@ def showSnapshots(snapshots):
 def showBackups(backups):
     print "Backups: "
     for backup in backups:
-        print "            "+backup[0]+" : "+str(backup[1]) 
+        print "            "+backup[0]+" : "+str(backup[1])
 
 
 snapshots = listSnapshots(myssjson)
